@@ -11,9 +11,6 @@ each container contains all of a line
 
  */
 public class Container {
-<<<<<<< HEAD
-    
-=======
     private Bullet firstBullet;
     private Plant firstPlant;
     private Zombie firstZombie;
@@ -26,5 +23,5 @@ public class Container {
 
 
 
->>>>>>> 2664cc127239ed0799f251d8685c905e3fe00f5a
+
 }
