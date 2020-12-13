@@ -6,7 +6,8 @@ import frame.mainwindow.MainWindow;
 import javax.swing.*;
 import java.awt.*;
 
-public class Test0 extends JFrame {
+public class Test0 extends JFrame
+{
     public static MainWindow m = new MainWindow();
     public static Test0 p;
     public static GameWindow p2;
