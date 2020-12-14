@@ -34,15 +34,21 @@ public class Bullet {
         this.isIce = ice;
     }
 
+    //init part
     public Bullet(int position_x,boolean ice){
         setPosition_x(position_x);
         setIce(ice);
     }
 
+    //when the bullet hit a zombie
+    //undone
     public void collision(Zombie z){
         if(isIce){
 
         }
 
     }
+
+
+
 }
