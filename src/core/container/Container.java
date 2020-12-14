@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 /*
 each container contains all of a line
-
  */
 public class Container {
     private Bullet firstBullet = null;
@@ -34,6 +33,12 @@ public class Container {
         return this.firstZombie;
     }
 
+    public void refresh(){
+        findFirstBullet();
+        findFirstPlant();
+        findFirstZombie();
+    }
+
     public void findFirstBullet() {
         if (bullets.isEmpty()) {
             firstBullet = null;
@@ -46,7 +51,7 @@ public class Container {
         }
     }
 
-    //undone
+    //find the first plant in a line
     public void findFirstPlant() {
         if (plants.isEmpty()) {
             firstPlant = null;
@@ -54,13 +59,29 @@ public class Container {
         }
         firstPlant = plants.get(0);
         for (int i = 1; i < plants.size(); i++) {
-
+            if(firstPlant.getPosition_x()<plants.get(i).getPosition_x())
+                firstPlant=plants.get(i);
         }
     }
 
+    //find the first plant before a zombie
+    public Plant findFirstPlant(Zombie z){
+        tmpPlant=null;
+        if(plants.isEmpty())
+            return null;
+        for(i=0;i<plants.size();i++){
+            if(plants.get(i).getPosition_x()<z.getPosition_x()){
+                if(tmpPlant==null)
+                    tmpPlant=plants.get(i);
+                else
+                    if(plants.get(i).getPosition_x()>tmpPlant.getPosition_x())
+                        tmpPlant=plants.get(i);
+            }
+        }
+        return tmpPlant;
+    }
 
-
-    //undone
+    //find the first zombie in a line
     public void findFirstZombie() {
         if (zombies.isEmpty()) {
             firstZombie = null;
@@ -68,8 +89,27 @@ public class Container {
         }
         firstZombie = zombies.get(0);
         for (int i = 1; i < zombies.size(); i++) {
+            if(firstZombie.getPosition_x()>zombies.get(i).getPosition_y())
+                firstZombie=zombies.get(i);
+        }
+    }
+
+    //find the first zombie before a bullet
+    public Zombie findFirstZombie(Bullet b){
+        tmpZombie=null;//reset tmpZombie
+        if(zombies.isEmpty())
+            return null;
+        for(i=0;i<zombies.size();i++){
+            if(zombies.get(i).getPosition_x()>b.getPosition_x()){
+                if(tmpZombie==null)
+                    tmpZombie=zombies.get(i);
+                else
+                    if(zombies.get(i).getPosition_x()<tmpZombie.getPosition_x())
+                        tmpZombie=zombies.get(i);
+            }
 
         }
+        return tmpZombie;
     }
 
     public void addBullet(int position_x, boolean ice) {
@@ -120,4 +160,6 @@ public class Container {
             }
         return false;
     }
+
+
 }

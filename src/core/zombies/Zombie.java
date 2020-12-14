@@ -43,10 +43,10 @@ public abstract class Zombie
     public abstract void step();
 
     public int getPosition_x() {
-        return position_x;
+        return this.position_x;
     }
 
     public int getPosition_y() {
-        return position_y;
+        return this.position_y;
     }
 }
