@@ -20,6 +20,7 @@ public class Container {
     private ArrayList<Bullet> bullets = new ArrayList<>();
     private ArrayList<Zombie> zombies = new ArrayList<>();
     private ArrayList<Plant> plants = new ArrayList<>();
+    static int gap;//the minimum distance between a zombie and a bullet
 
     public Bullet getFirstBullet() {
         return this.firstBullet;
@@ -38,6 +39,7 @@ public class Container {
         findFirstPlant();
         findFirstZombie();
     }
+
 
     public void findFirstBullet() {
         if (bullets.isEmpty()) {
@@ -110,6 +112,32 @@ public class Container {
 
         }
         return tmpZombie;
+    }
+
+    //view all the bullets
+    public void bulletCheck(){
+        if(bullets.isEmpty())
+            return;
+        for(i=0;i<bullets.size();i++){
+            tmpBullet=bullets.get(i);
+            //it fly away
+//            if(tmpBullet.getPosition_x()>?){
+//                deleteBullet(tmpBullet);
+//                tmpBullet=null;
+//                continue;;
+//            }
+
+            //it hits a zombie
+            tmpZombie=findFirstZombie(tmpBullet);
+            if(tmpZombie!=null){
+                if(tmpZombie.getPosition_x()-tmpBullet.getPosition_x()<gap){
+                    tmpBullet.collision(tmpZombie);
+                    deleteBullet(tmpBullet);
+                    tmpBullet=null;
+                }
+            }
+
+        }
     }
 
     public void addBullet(int position_x, boolean ice) {
