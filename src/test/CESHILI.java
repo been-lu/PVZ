@@ -6,13 +6,13 @@ import frame.mainwindow.MainWindow;
 import javax.swing.*;
 import java.awt.*;
 
-public class Test0 extends JFrame
+public class CESHILI extends JFrame
 {
     public static MainWindow m = new MainWindow();
-    public static Test0 p;
+    public static CESHILI p;
     public static GameWindow p2;
 
-    public Test0()
+    public CESHILI()
     {
         this.setSize(900, 630);
         this.setLocation(0, 0);
@@ -23,8 +23,7 @@ public class Test0 extends JFrame
         this.setVisible(true);
     }
 
-    public static void main(String[] args)
-    {
-        p = new Test0();
+    public static void main(String[] args) {
+        p = new CESHILI();
     }
 }
