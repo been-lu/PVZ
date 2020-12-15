@@ -47,6 +47,6 @@ public class Zombie0 extends Zombie
     @Override
     public void step()
     {
-      this.x-=speed;
+      this.position_x-=speed;
     }
 }

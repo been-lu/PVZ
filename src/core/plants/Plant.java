@@ -37,14 +37,11 @@ public abstract class Plant
     protected int position_y;
 
 
-<<<<<<< Updated upstream
     public static final int LIFE = 0;
     public static final int ATTACK = 1;
     public static final int DEAD = 2;
     protected int state = LIFE;
-=======
 
->>>>>>> Stashed changes
 
     public abstract void step();
 
@@ -54,5 +51,13 @@ public abstract class Plant
 
     public int getPosition_y() {
         return this.position_y;
+    }
+
+    public void setPosition_x(int position_x) {
+        this.position_x = position_x;
+    }
+
+    public void setPosition_y(int position_y) {
+        this.position_y = position_y;
     }
 }

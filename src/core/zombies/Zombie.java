@@ -21,25 +21,19 @@ public abstract class Zombie extends JLabel
     protected int width;
     protected int height;
 
-    public int getX()
-    {
-        return x;
+    public void setPosition_x(int position_x) {
+        this.position_x = position_x;
     }
 
-    public void setX(int x)
-    {
-        this.x = x;
+    public void setPosition_y(int position_y) {
+        this.position_y = position_y;
     }
 
     protected int live;
-<<<<<<< Updated upstream
     protected int position_x;
     protected int position_y;
-=======
-    protected int x;
-    protected int y;
     protected int speed;
->>>>>>> Stashed changes
+
 
 
     public static final int LIFE = 0;
@@ -48,7 +42,7 @@ public abstract class Zombie extends JLabel
     protected int state = LIFE;
 
     public abstract void step();
-<<<<<<< Updated upstream
+
 
     public int getPosition_x() {
         return this.position_x;
@@ -56,12 +50,12 @@ public abstract class Zombie extends JLabel
 
     public int getPosition_y() {
         return this.position_y;
-=======
+    }
+
     public Zombie (int x,int y)
     {
-        this.x=x;
-        this.y=y;
+        this.position_x=x;
+        this.position_y=y;
         setIcon(getImage1());
->>>>>>> Stashed changes
     }
 }
