@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 import java.awt.image.ImageObserver;
 import java.io.File;
 
+import core.plants.Plant;
+import core.plants.Pea;
 import core.zombies.Zombie;
 import core.zombies.Zombie0;
 import util.ImgUtil;
@@ -28,12 +30,12 @@ import util.ImgUtil;
 public  class GameWindow extends JPanel implements Runnable
 {
 
-    ArrayList<Zombie> zombie = new ArrayList();
+  public ArrayList<Zombie> zombie = new ArrayList();
+  public ArrayList<Plant>  plant = new ArrayList();
 
     String state;
     boolean GameOver = false;
     boolean Pass = false;
-
     public GameWindow()
     {
 
@@ -41,11 +43,13 @@ public  class GameWindow extends JPanel implements Runnable
 
     public void Action()
     {
-        Zombie ces=new Zombie0(200,400) ;
-        add(ces);
-        (new Thread(new GameWindow())).start();
-        this.addMouseListener(new MouseListener() {
-            public void mousePressed(MouseEvent e) {
+        Thread t1=new Thread(this);
+        t1.start();
+        this. creatZombie();
+        this.addMouseListener(new MouseListener()
+        {
+            public void mousePressed(MouseEvent e)
+            {
 
             }
 
@@ -61,7 +65,8 @@ public  class GameWindow extends JPanel implements Runnable
             public void mouseClicked(MouseEvent e) {
             }
         });
-        this.addMouseMotionListener(new MouseMotionListener() {
+        this.addMouseMotionListener
+                (new MouseMotionListener() {
             public void mouseMoved(MouseEvent e) {
 
             }
@@ -71,55 +76,60 @@ public  class GameWindow extends JPanel implements Runnable
         });
     }//鼠标处理
 
+    @Override
     public void paint(Graphics g)
     {
-
-
         super.paint(g);
-  
-        //Zombie ce=new Zombie0(400,100);
-       // Zombie ce2=new Zombie0(600,100);
-       // drawZombie(g);
-       // System.out.println("1");
-       // this.paintBack(g);
-        //zombie.add(ce);
-        //zombie.add(ce2);
 
-       // drawZombie(g);
+        this.paintBack(g);
+        drawZombie(g);
+        drawPlant(g);
     }
 
-
-    public void paintBack(Graphics g){
+    public void paintBack(Graphics g)
+    {
         g.drawImage(ImgUtil.background1, -150, 0, (ImageObserver)null);
     }
 
     public void drawZombie(Graphics g)
     {
-
         for(Zombie z:zombie)
         {
             z.paintObjict(g);
         }
 
     }
-
-    public void drawSun(Graphics g)
+    public void drawPlant(Graphics g)
     {
-
+        for(Plant p:plant)
+        {
+            p.paintObjict(g);
+        }
     }
 
-    public void drawBomb(Graphics g)
+        public void drawSun (Graphics g)
+        {
+
+        }
+
+        public void drawBomb (Graphics g)
+        {
+
+        }
+
+        public void isPass ()
+        {
+
+        }
+
+        public void isGameOver ()
+        {
+
+        }
+
+
+    public boolean check(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
     {
-
-    }
-
-    public void isPass(){
-    }
-
-    public void isGameOver(){
-    }
-
-    public boolean check(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) {
         return x1 + w1 >= x2 && y1 + h1 >= y2 && x2 + w2 >= x1 && y2 + h2 >= y1;
     }
 
@@ -132,33 +142,37 @@ public  class GameWindow extends JPanel implements Runnable
            z.step();
        }
     }
-
-
     public void run()
     {
-        System.out.println("2");
+
         while(true)
         {
             try
             {
-                this. creatZombie();
                 this. zombiemove();
-                Thread.sleep(500);
-                ;
-
+                Thread.sleep(30);
+                repaint();
             } catch (InterruptedException e)
             {
                 e.printStackTrace();
             }
-
-
-
         }
+
+    }
+    public void update(Graphics g)
+    {
 
     }
     public void creatZombie()
     {
-        zombie.add(new Zombie0(100,100));
+        int m=100;//每一格大概100高
+        zombie.add(new Zombie0(830,0));
+        plant.add(new Pea(100,0));
+        zombie.add(new Zombie0(830,m));//0.100
+        zombie.add(new Zombie0(830,2*m));
+        zombie.add(new Zombie0(830,3*m));
+        zombie.add(new Zombie0(830,4*m));
+
     }
 }
 

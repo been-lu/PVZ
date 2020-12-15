@@ -31,7 +31,7 @@ public class MainListener extends MouseAdapter {
             Test0.p2.Action();
             Test0.p.add(Test0.p2);
             Test0.p.repaint();
-            Test0.p2.requestFocus();
+          //  Test0.p2.requestFocus();
             Test0.p.setVisible(true);
         }
     }

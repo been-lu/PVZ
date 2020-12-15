@@ -1,67 +1,105 @@
 package core.zombies;
 
-import core.plants.Plant;
+import frame.gamewindow.GameWindow;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+
 public abstract class Zombie extends JLabel
 {
-
+    protected int width;
+    protected int height;
+    protected int life;
+    protected int position_x;
+    protected int position_y;
+    protected int zombiarunimg;
+    protected int zombiaattackimg;
+    protected int zombiadieimg;
+    protected int speed;
+    protected int ATK;
+    public static final int isdie = 0;
+    public static final int RUN=0;
+    public static final int ATTACK = 1;
+    public static final int DEAD = 2;
+    protected int state = RUN;
 
     public abstract BufferedImage getImage();
-    public abstract Icon getImage1();
+
 
     public void paintObjict(Graphics g)
     {
-        g.drawImage(getImage(),position_x,position_y,null);
-    }
-    protected int width;
-    protected int height;
-
-    public int getX()
-    {
-        return x;
+        g.drawImage(getImage(),position_x-65,position_y+20,null);
     }
 
-    public void setX(int x)
-    {
-        this.x = x;
-    }
-
-    protected int live;
-<<<<<<< Updated upstream
-    protected int position_x;
-    protected int position_y;
-=======
-    protected int x;
-    protected int y;
-    protected int speed;
->>>>>>> Stashed changes
-
-
-    public static final int LIFE = 0;
-    public static final int ATTACK = 1;
-    public static final int DEAD = 2;
-    protected int state = LIFE;
 
     public abstract void step();
-<<<<<<< Updated upstream
 
-    public int getPosition_x() {
+
+    public int getPosition_x()
+    {
         return this.position_x;
     }
 
-    public int getPosition_y() {
+    public int getPosition_y()
+    {
         return this.position_y;
-=======
+    }
+
+    public int getLife()
+    {
+        return life;
+    }
+
+    public int getSpeed()
+    {
+        return speed;
+    }
+
+    public void setSpeed(int speed)
+    {
+        this.speed = speed;
+    }
+
+    public int getState()
+    {
+        return state;
+    }
+
+    public void setState(int state)
+    {
+        this.state = state;
+    }
+
+    public int getATK()
+    {
+        return ATK;
+    }
+
+    public void setATK(int ATK)
+    {
+        this.ATK = ATK;
+    }
+
+    public void setLife(int life)
+    {
+        this.life = life;
+    }
+
+    public void beAttack(int ATK)
+    {
+        this.life-=ATK;
+        if(this.life<=0)
+        {
+            GameWindow p=new GameWindow();
+            p.plant.remove(this);
+        }
+    }
+
     public Zombie (int x,int y)
     {
-        this.x=x;
-        this.y=y;
-        setIcon(getImage1());
->>>>>>> Stashed changes
+        this.position_x=x;
+        this.position_y=y;
     }
 }
