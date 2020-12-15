@@ -12,7 +12,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class MainWindow extends JPanel{
+public class MainWindow extends JPanel
+{
     static Boolean flag = false;
     public static Color color;
     private static BufferedImage surface;

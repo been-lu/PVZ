@@ -1,10 +1,13 @@
 package test;
 
+import core.zombies.Zombie;
+import core.zombies.Zombie0;
 import frame.gamewindow.GameWindow;
 import frame.mainwindow.MainWindow;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Test0 extends JFrame
 {

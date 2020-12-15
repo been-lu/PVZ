@@ -13,7 +13,8 @@ public abstract class Plant
         {
             BufferedImage img = ImageIO.read(Plant.class.getResource(fileName));
             return img;
-        }catch(Exception e)
+        }
+        catch(Exception e)
         {
             e.printStackTrace();
             throw new RuntimeException();
@@ -21,6 +22,7 @@ public abstract class Plant
     }
 
     public abstract BufferedImage getImage();
+
 
 
     public void paintObject(Graphics g)
@@ -35,10 +37,14 @@ public abstract class Plant
     protected int position_y;
 
 
+<<<<<<< Updated upstream
     public static final int LIFE = 0;
     public static final int ATTACK = 1;
     public static final int DEAD = 2;
     protected int state = LIFE;
+=======
+
+>>>>>>> Stashed changes
 
     public abstract void step();
 
