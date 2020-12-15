@@ -33,6 +33,7 @@ public abstract class Zombie extends JLabel
         g.drawImage(getImage(),position_x-65,position_y+20,null);
     }
 
+<<<<<<< HEAD
 
     public abstract void step();
 
@@ -51,6 +52,21 @@ public abstract class Zombie extends JLabel
     {
         return life;
     }
+=======
+    public void setPosition_x(int position_x) {
+        this.position_x = position_x;
+    }
+
+    public void setPosition_y(int position_y) {
+        this.position_y = position_y;
+    }
+
+    protected int live;
+    protected int position_x;
+    protected int position_y;
+    protected int speed;
+
+>>>>>>> 060f7a54c99b4fdd1005d5f16ecaeda27fd0e9ad
 
     public int getSpeed()
     {
@@ -62,10 +78,15 @@ public abstract class Zombie extends JLabel
         this.speed = speed;
     }
 
+<<<<<<< HEAD
     public int getState()
     {
         return state;
     }
+=======
+    public abstract void step();
+
+>>>>>>> 060f7a54c99b4fdd1005d5f16ecaeda27fd0e9ad
 
     public void setState(int state)
     {
@@ -97,9 +118,20 @@ public abstract class Zombie extends JLabel
         }
     }
 
+<<<<<<< HEAD
+=======
+    public int getPosition_y() {
+        return this.position_y;
+    }
+
+>>>>>>> 060f7a54c99b4fdd1005d5f16ecaeda27fd0e9ad
     public Zombie (int x,int y)
     {
         this.position_x=x;
         this.position_y=y;
+<<<<<<< HEAD
+=======
+        setIcon(getImage1());
+>>>>>>> 060f7a54c99b4fdd1005d5f16ecaeda27fd0e9ad
     }
 }

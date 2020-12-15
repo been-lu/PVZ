@@ -91,7 +91,7 @@ public class Container {
         }
         firstZombie = zombies.get(0);
         for (int i = 1; i < zombies.size(); i++) {
-            if(firstZombie.getPosition_x()>zombies.get(i).getPosition_y())
+            if(firstZombie.getPosition_x()>zombies.get(i).getPosition_x())
                 firstZombie=zombies.get(i);
         }
     }
@@ -186,6 +186,14 @@ public class Container {
                 zombies.remove(i);
                 return true;
             }
+        return false;
+    }
+
+    //undone
+    //everything goes
+    public boolean move(){
+
+
         return false;
     }
 
