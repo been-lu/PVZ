@@ -9,24 +9,30 @@ import java.io.File;
 public  class Pea extends Plant
 {
 
-    BufferedImage attrackimg[]=new BufferedImage[88];
-    BufferedImage waiting[]=new BufferedImage[88];
+    //BufferedImage attrackimg[]=new BufferedImage[88];
+    public static final int IMGNUM=13;
+    BufferedImage waiting[]=new BufferedImage[IMGNUM];
     public BufferedImage getImage()
     {
-        //plantimg++;
-     // return waiting[plantimg];
-        return waiting[0];
+        plantimg++;
+        if(plantimg==IMGNUM)
+            plantimg=0;
+        return waiting[plantimg];
+
     }
     public void getImage1()
     {
-        try
+        int i;
+        for(i=1;i<=IMGNUM;i++)
         {
-          waiting[0]=ImageIO.read(new File("img/Plant2.png"));
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            throw new RuntimeException();
+            try
+            {
+                waiting[i-1]=ImageIO.read(new File("img/plant/peaShooter("+i+").png"));
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+                throw new RuntimeException();
+            }
         }
     }
     public Pea(int x,int y)
@@ -34,6 +40,9 @@ public  class Pea extends Plant
         super(x,y);
         this.height=50;
         this.width=50;
+        this.plantimg=0;
         this.getImage1();
+        this.life=10;
+        this.kind=1;
     }
 }

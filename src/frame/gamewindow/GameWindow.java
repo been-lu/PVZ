@@ -21,6 +21,8 @@ import java.io.File;
 
 import core.plants.Plant;
 import core.plants.Pea;
+import core.plants.SnowPea;
+import core.plants.SunFlower;
 import core.zombies.Zombie;
 import core.zombies.Zombie0;
 import util.ImgUtil;
@@ -29,7 +31,6 @@ import util.ImgUtil;
 
 public  class GameWindow extends JPanel implements Runnable
 {
-
   public ArrayList<Zombie> zombie = new ArrayList();
   public ArrayList<Plant>  plant = new ArrayList();
 
@@ -43,56 +44,28 @@ public  class GameWindow extends JPanel implements Runnable
 
     public void Action()
     {
+
         Thread t1=new Thread(this);
         t1.start();
         this. creatZombie();
-        this.addMouseListener(new MouseListener()
-        {
-            public void mousePressed(MouseEvent e)
-            {
+    }
 
-            }
-
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            public void mouseExited(MouseEvent e) {
-            }
-
-            public void mouseEntered(MouseEvent e) {
-            }
-
-            public void mouseClicked(MouseEvent e) {
-            }
-        });
-        this.addMouseMotionListener
-                (new MouseMotionListener() {
-            public void mouseMoved(MouseEvent e) {
-
-            }
-
-            public void mouseDragged(MouseEvent e) {
-            }
-        });
-    }//鼠标处理
-
-    @Override
     public void paint(Graphics g)
     {
         super.paint(g);
-
         this.paintBack(g);
         drawZombie(g);
         drawPlant(g);
     }
-
     public void paintBack(Graphics g)
-    {
+        {
+
         g.drawImage(ImgUtil.background1, -150, 0, (ImageObserver)null);
     }
 
     public void drawZombie(Graphics g)
     {
+
         for(Zombie z:zombie)
         {
             z.paintObjict(g);
@@ -106,25 +79,14 @@ public  class GameWindow extends JPanel implements Runnable
             p.paintObjict(g);
         }
     }
-
-        public void drawSun (Graphics g)
-        {
-
-        }
-
-        public void drawBomb (Graphics g)
-        {
-
-        }
-
         public void isPass ()
         {
-
         }
-
         public void isGameOver ()
         {
-
+        }
+    public void drawSun(Graphics g)
+        {
         }
 
 
@@ -133,47 +95,82 @@ public  class GameWindow extends JPanel implements Runnable
         return x1 + w1 >= x2 && y1 + h1 >= y2 && x2 + w2 >= x1 && y2 + h2 >= y1;
     }
 
+
     //public void zombieisAttacked(ArrayList<Zombie> zombie){}
+
+    public void drawBomb(Graphics g)
+    {
+    }
 
     public void zombiemove()
     {
        for(Zombie z:zombie)
        {
+           z.cheak(plant);
            z.step();
        }
     }
-    public void run()
+
+
+
+    public void cheakdie()
     {
 
+       Iterator<Plant> p=plant.iterator();
+       while(p.hasNext())
+       {
+           Plant temp=p.next();
+           if(temp.getState()==1)
+           {
+               p.remove();
+           }
+       }
+       Iterator<Zombie>z=zombie.iterator();
+       while(z.hasNext())
+       {
+           Zombie temp=z.next();
+           if(temp.getState()==2)
+           {
+               z.remove();
+           }
+       }
+
+    }
+
+        public void creatZombie()
+        {
+            int m=100;//每一格大概100高
+            zombie.add(new Zombie0(600,0));
+            plant.add(new Pea(0,100));
+            plant.add(new Pea(80,100));
+            plant.add(new Pea(240,100));
+             plant.add(new SnowPea(500,200));
+            plant.add(new SunFlower(0,0));
+            plant.add(new SunFlower(400,200));
+            zombie.add(new Zombie0(600,m));//0.100
+            zombie.add(new Zombie0(600,2*m));
+             zombie.add(new Zombie0(600,3*m));
+            zombie.add(new Zombie0(600,4*m));
+
+        }
+    public void run()
+    {
         while(true)
         {
             try
             {
                 this. zombiemove();
-                Thread.sleep(30);
+                cheakdie();
                 repaint();
+                Thread.sleep(30);
             } catch (InterruptedException e)
             {
                 e.printStackTrace();
             }
         }
-
     }
-    public void update(Graphics g)
-    {
 
-    }
-    public void creatZombie()
-    {
-        int m=100;//每一格大概100高
-        zombie.add(new Zombie0(830,0));
-        plant.add(new Pea(100,0));
-        zombie.add(new Zombie0(830,m));//0.100
-        zombie.add(new Zombie0(830,2*m));
-        zombie.add(new Zombie0(830,3*m));
-        zombie.add(new Zombie0(830,4*m));
 
-    }
 }
 
 
