@@ -1,10 +1,14 @@
 package core.plants;
 
+import core.bullets.Bullet;
+import core.zombies.Zombie;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 
-public class SnowPea extends Plant
+public class SnowPea extends Plant implements Attack
 {
     public static final int IMGNUM=15;
     BufferedImage waiting[]=new BufferedImage[IMGNUM];
@@ -40,5 +44,17 @@ public class SnowPea extends Plant
         this.life=30;
         this.getImage1();
         this.kind=2;
+    }
+
+    @Override
+    public boolean attack(ArrayList<Zombie> zombies, ArrayList<Bullet> bullets){
+        for(Zombie z:zombies){
+            if(z.getPosition_y()==this.position_y)
+                if(z.getPosition_x()>=this.position_x) {
+                    bullets.add(new Bullet(position_x, position_y, true));
+                    return true;
+                }
+        }
+        return false;
     }
 }

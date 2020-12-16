@@ -95,14 +95,11 @@ public  class GameWindow extends JPanel implements Runnable
             b.paintObject(g);
         }
     }
-    public void isPass ()
-    {
+    public void isPass () {
     }
-    public void isGameOver ()
-    {
+    public void isGameOver () {
     }
-    public void drawSun(Graphics g)
-    {
+    public void drawSun(Graphics g) {
     }
 
 
