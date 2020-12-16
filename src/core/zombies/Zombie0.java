@@ -98,9 +98,7 @@ public class Zombie0 extends Zombie
         }
     }
     @Override
-    public void cheak(ArrayList<Plant> plant)
-    {
-        System.out.println("僵尸位置"+position_x);
+    public void cheak(ArrayList<Plant> plant){
         for(Plant  p: plant)
         {
             if(position_y==p.getPosition_y())

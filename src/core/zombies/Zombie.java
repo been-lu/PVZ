@@ -50,8 +50,7 @@ public abstract class Zombie extends JLabel
         this.life-=ATK;
         if(this.life<=0)
         {
-            GameWindow p=new GameWindow();
-            p.plant.remove(this);
+            state=2;
         }
     }
     public Zombie (int x,int y)

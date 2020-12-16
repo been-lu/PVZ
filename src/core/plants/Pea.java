@@ -45,4 +45,6 @@ public  class Pea extends Plant
         this.life=10;
         this.kind=1;
     }
+
+
 }

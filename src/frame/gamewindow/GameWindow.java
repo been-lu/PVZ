@@ -2,9 +2,7 @@ package frame.gamewindow;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -19,6 +17,7 @@ import javax.swing.JPanel;
 import java.awt.image.ImageObserver;
 import java.io.File;
 
+import core.bullets.Bullet;
 import core.plants.Plant;
 import core.plants.Pea;
 import core.plants.SnowPea;
@@ -31,8 +30,16 @@ import util.ImgUtil;
 
 public  class GameWindow extends JPanel implements Runnable
 {
-  public ArrayList<Zombie> zombie = new ArrayList();
-  public ArrayList<Plant>  plant = new ArrayList();
+    public ArrayList<Zombie> zombie = new ArrayList();
+    public ArrayList<Plant>  plant = new ArrayList();
+    public ArrayList<Bullet> bullets=new ArrayList<>();
+
+//    public Container c1=new Container();
+//    public Container c2=new Container();
+//    public Container c3=new Container();
+//    public Container c4=new Container();
+//    public Container c5=new Container();
+
 
     String state;
     boolean GameOver = false;
@@ -56,10 +63,10 @@ public  class GameWindow extends JPanel implements Runnable
         this.paintBack(g);
         drawZombie(g);
         drawPlant(g);
+        drawBullet(g);
     }
     public void paintBack(Graphics g)
-        {
-
+    {
         g.drawImage(ImgUtil.background1, -150, 0, (ImageObserver)null);
     }
 
@@ -79,15 +86,21 @@ public  class GameWindow extends JPanel implements Runnable
             p.paintObjict(g);
         }
     }
-        public void isPass ()
-        {
+
+    public void drawBullet(Graphics g){
+        for(Bullet b:bullets){
+            b.paintObject(g);
         }
-        public void isGameOver ()
-        {
-        }
+    }
+    public void isPass ()
+    {
+    }
+    public void isGameOver ()
+    {
+    }
     public void drawSun(Graphics g)
-        {
-        }
+    {
+    }
 
 
     public boolean check(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
@@ -111,8 +124,14 @@ public  class GameWindow extends JPanel implements Runnable
        }
     }
 
-
-
+    public void bulletMove(){
+        for(Bullet b:bullets){
+            if(b.check(zombie))
+                ;
+            else
+                b.step();
+        }
+    }
     public void cheakdie()
     {
 
@@ -137,29 +156,29 @@ public  class GameWindow extends JPanel implements Runnable
 
     }
 
-        public void creatZombie()
-        {
-            int m=100;//每一格大概100高
-            zombie.add(new Zombie0(600,0));
-            plant.add(new Pea(0,100));
-            plant.add(new Pea(80,100));
-            plant.add(new Pea(240,100));
-             plant.add(new SnowPea(500,200));
-            plant.add(new SunFlower(0,0));
-            plant.add(new SunFlower(400,200));
-            zombie.add(new Zombie0(600,m));//0.100
-            zombie.add(new Zombie0(600,2*m));
-             zombie.add(new Zombie0(600,3*m));
-            zombie.add(new Zombie0(600,4*m));
+    public void creatZombie()
+    {
+        int m=100;//每一格大概100高
+        zombie.add(new Zombie0(600,0));
+        plant.add(new Pea(0,100));
+        plant.add(new Pea(80,100));
+        plant.add(new Pea(240,100));
+        plant.add(new SnowPea(500,200));
+        plant.add(new SunFlower(0,0));
+        plant.add(new SunFlower(400,200));
+        zombie.add(new Zombie0(600,m));//0.100
+        zombie.add(new Zombie0(600,2*m));
+        zombie.add(new Zombie0(600,3*m));
+        zombie.add(new Zombie0(600,4*m));
+    }
 
-        }
     public void run()
     {
         while(true)
         {
             try
             {
-                this. zombiemove();
+                this.zombiemove();
                 cheakdie();
                 repaint();
                 Thread.sleep(30);
@@ -169,6 +188,7 @@ public  class GameWindow extends JPanel implements Runnable
             }
         }
     }
+
 
 
 }
