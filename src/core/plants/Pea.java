@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 
-public  class Pea extends Plant implements Attack
+public  class Pea extends Plant
 {
 
     //BufferedImage attrackimg[]=new BufferedImage[88];
@@ -49,7 +49,6 @@ public  class Pea extends Plant implements Attack
         this.kind=1;
     }
 
-    @Override
     public boolean attack(ArrayList<Zombie> zombies, ArrayList<Bullet> bullets){
         for(Zombie z:zombies){
             if(z.getPosition_y()==this.position_y)

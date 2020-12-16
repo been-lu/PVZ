@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 
-public class SnowPea extends Plant implements Attack
+public class SnowPea extends Plant
 {
     public static final int IMGNUM=15;
     BufferedImage waiting[]=new BufferedImage[IMGNUM];
@@ -46,7 +46,6 @@ public class SnowPea extends Plant implements Attack
         this.kind=2;
     }
 
-    @Override
     public boolean attack(ArrayList<Zombie> zombies, ArrayList<Bullet> bullets){
         for(Zombie z:zombies){
             if(z.getPosition_y()==this.position_y)

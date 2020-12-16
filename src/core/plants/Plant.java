@@ -73,4 +73,13 @@ public abstract class Plant extends JLabel
     {
         this.position_y = position_y;
     }
+
+    public int getKind() {
+        return this.kind;
+    }
+
+
+    public boolean attack(ArrayList<Zombie> zombies, ArrayList<Bullet> bullets){
+        return false;
+    }
 }
