@@ -35,8 +35,10 @@ public class Zombie0 extends Zombie
         this.zombiadieimg=0;
         this.ATK=0.1;
         this.state=RUN;
+        this.kind=0;
     }
-    public void getImage1()   //加载图片
+
+    public  void getImage1()   //加载图片
     {
         try
         {
@@ -59,7 +61,7 @@ public class Zombie0 extends Zombie
             throw new RuntimeException();
         }
     }
-    public BufferedImage getImage()  //获取图片.供其他类调用
+    public  BufferedImage getImage()  //获取图片.供其他类调用
     {
         if (state == 0)
         {
@@ -100,7 +102,6 @@ public class Zombie0 extends Zombie
     @Override
     public void cheak(ArrayList<Plant> plant)
     {
-        System.out.println("僵尸位置"+position_x);
         for(Plant  p: plant)
         {
             if(position_y==p.getPosition_y())
@@ -115,7 +116,6 @@ public class Zombie0 extends Zombie
     @Override
     public void attack(Plant p)
     {
-
       state=ATTACK;
         if(p.getLife()<ATK)
             state=RUN;

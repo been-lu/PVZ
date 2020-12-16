@@ -11,12 +11,14 @@ import javax.swing.*;
 public abstract class Plant extends JLabel
 {
     protected int width;
-    public int kind;//0-太阳花,1-豌豆射手,2-寒冰射手
+    public int kind;//0-太阳花,1-豌豆射手,2-寒冰射手,-3坚果,-4双射手
     protected int height;
     protected double life;
     protected int position_x;
     protected int position_y;
     protected int plantimg;
+    protected int plantimg1;
+    protected int plantimg2;
     public  static final int LIFE=0;
     public  static final int DIE=1;
     protected int state = LIFE;

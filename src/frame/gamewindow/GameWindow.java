@@ -19,12 +19,8 @@ import javax.swing.JPanel;
 import java.awt.image.ImageObserver;
 import java.io.File;
 
-import core.plants.Plant;
-import core.plants.Pea;
-import core.plants.SnowPea;
-import core.plants.SunFlower;
-import core.zombies.Zombie;
-import core.zombies.Zombie0;
+import core.plants.*;
+import core.zombies.*;
 import util.ImgUtil;
 
 
@@ -49,7 +45,6 @@ public  class GameWindow extends JPanel implements Runnable
         t1.start();
         this. creatZombie();
     }
-
     public void paint(Graphics g)
     {
         super.paint(g);
@@ -58,11 +53,10 @@ public  class GameWindow extends JPanel implements Runnable
         drawPlant(g);
     }
     public void paintBack(Graphics g)
-        {
+    {
 
         g.drawImage(ImgUtil.background1, -150, 0, (ImageObserver)null);
     }
-
     public void drawZombie(Graphics g)
     {
 
@@ -88,8 +82,6 @@ public  class GameWindow extends JPanel implements Runnable
     public void drawSun(Graphics g)
         {
         }
-
-
     public boolean check(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
     {
         return x1 + w1 >= x2 && y1 + h1 >= y2 && x2 + w2 >= x1 && y2 + h2 >= y1;
@@ -111,11 +103,8 @@ public  class GameWindow extends JPanel implements Runnable
        }
     }
 
-
-
     public void cheakdie()
     {
-
        Iterator<Plant> p=plant.iterator();
        while(p.hasNext())
        {
@@ -131,27 +120,27 @@ public  class GameWindow extends JPanel implements Runnable
            Zombie temp=z.next();
            if(temp.getState()==2)
            {
+               if(temp.getKind()==1||temp.getKind()==2)
+                   temp.creatzombie(temp.getPosition_x(),temp.getPosition_y(),zombie);
                z.remove();
            }
        }
-
     }
-
-        public void creatZombie()
+    public void creatZombie()
         {
             int m=100;//每一格大概100高
             zombie.add(new Zombie0(600,0));
             plant.add(new Pea(0,100));
             plant.add(new Pea(80,100));
             plant.add(new Pea(240,100));
-             plant.add(new SnowPea(500,200));
+            plant.add(new SnowPea(500,200));
             plant.add(new SunFlower(0,0));
             plant.add(new SunFlower(400,200));
-            zombie.add(new Zombie0(600,m));//0.100
-            zombie.add(new Zombie0(600,2*m));
-             zombie.add(new Zombie0(600,3*m));
-            zombie.add(new Zombie0(600,4*m));
-
+            zombie.add(new Zombie4(600,m));//0.100
+            zombie.add(new Zombie1(600,2*m));
+            zombie.add(new Zombie2(600,3*m));
+            zombie.add(new Zombie3(600,4*m));
+            plant.add(new Nut(160,300));
         }
     public void run()
     {
