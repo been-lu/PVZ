@@ -47,7 +47,6 @@ public abstract class Plant extends JLabel
         return LIFE;
     }
 
-<<<<<<< HEAD
     public abstract BufferedImage getImage();
     public abstract void getImage1();
     public  void beAttack(int ATK)
@@ -59,12 +58,6 @@ public abstract class Plant extends JLabel
             p.plant.remove(this);
         }
     }
-=======
-    public static final int LIFE = 0;
-    public static final int ATTACK = 1;
-    public static final int DEAD = 2;
-    protected int state = LIFE;
->>>>>>> 060f7a54c99b4fdd1005d5f16ecaeda27fd0e9ad
 
 
 
@@ -76,18 +69,9 @@ public abstract class Plant extends JLabel
         return this.position_y;
     }
 
-<<<<<<< HEAD
     public  void paintObjict(Graphics g)
 
     {
         g.drawImage(getImage(),position_x,position_y,null);
-=======
-    public void setPosition_x(int position_x) {
-        this.position_x = position_x;
-    }
-
-    public void setPosition_y(int position_y) {
-        this.position_y = position_y;
->>>>>>> 060f7a54c99b4fdd1005d5f16ecaeda27fd0e9ad
     }
 }

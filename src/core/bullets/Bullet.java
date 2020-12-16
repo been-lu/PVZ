@@ -2,24 +2,13 @@ package core.bullets;
 
 import core.zombies.Zombie;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 public class Bullet {
     private int position_x;
-    private int position_y;
     private boolean isIce;//to judge whether this bullet is created by a ice bean shooter
-    static int bulletSpeed=30;
+    static int bulletSpeed;
     private BufferedImage img;
-
-    public int getPosition_y() {
-        return this.position_y;
-    }
-
-    public void setPosition_y(int position_y) {
-        this.position_y = position_y;
-    }
 
     public int getPosition_x() {
         return position_x;
@@ -49,21 +38,6 @@ public class Bullet {
     public Bullet(int position_x,boolean ice){
         setPosition_x(position_x);
         setIce(ice);
-        if(ice){
-            try{
-                this.img = ImageIO.read(new File("img/icebullet.png"));
-            }catch (Exception var1) {
-                var1.printStackTrace();
-            }
-        }
-        else
-        {
-            try{
-                this.img = ImageIO.read(new File("img/bullet.png"));
-            }catch (Exception var1) {
-                var1.printStackTrace();
-            }
-        }
     }
 
     //when the bullet hit a zombie
@@ -74,7 +48,6 @@ public class Bullet {
         }
 
     }
-
 
 
 
