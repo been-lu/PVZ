@@ -22,8 +22,7 @@ import core.plants.Plant;
 import core.plants.Pea;
 import core.plants.SnowPea;
 import core.plants.SunFlower;
-import core.zombies.Zombie;
-import core.zombies.Zombie0;
+import core.zombies.*;
 import util.ImgUtil;
 
 
@@ -170,17 +169,18 @@ public  class GameWindow extends JPanel implements Runnable
     public void creatZombie()
     {
         int m=100;//每一格大概100高
-        zombie.add(new Zombie0(600,0));
+
         plant.add(new Pea(0,100));
         plant.add(new Pea(80,100));
         plant.add(new Pea(240,100));
         plant.add(new SnowPea(500,200));
         plant.add(new SunFlower(0,0));
         plant.add(new SunFlower(400,200));
-        zombie.add(new Zombie0(600,m));//0.100
-        zombie.add(new Zombie0(600,2*m));
-        zombie.add(new Zombie0(600,3*m));
-        zombie.add(new Zombie0(600,4*m));
+        zombie.add(new Zombie0(600,0));
+        zombie.add(new Zombie1(600,m));//0.100
+        zombie.add(new Zombie2(600,2*m));
+        zombie.add(new Zombie3(600,3*m));
+        zombie.add(new Zombie4(600,4*m));
     }
 
     public void run()
@@ -193,6 +193,7 @@ public  class GameWindow extends JPanel implements Runnable
                 this.bulletMove();
                 cheakdie();
                 repaint();
+
                 Thread.sleep(30);
             } catch (InterruptedException e)
             {

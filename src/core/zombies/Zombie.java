@@ -21,12 +21,14 @@ public abstract class Zombie extends JLabel
     protected int zombiadieimg;
     protected double speed;
     protected double ATK;
+    protected int kind;
     public static final int isdie = 0;
     public static final int RUN=0;
     public static final int ATTACK = 1;
     public static final int DEAD = 2;
     protected int state = RUN;
     public abstract BufferedImage getImage();
+    public abstract  void getImage1();
     public void paintObjict(Graphics g)
     {
         g.drawImage(getImage(),position_x-65,position_y+20,null);

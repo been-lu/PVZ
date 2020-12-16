@@ -27,6 +27,7 @@ public class Zombie4 extends Zombie{
         this.zombiaattackimg=0;
         this.zombiadieimg=0;
         this.ATK=0.1;
+        this.kind=4;
         this.state=RUN;
     }
 

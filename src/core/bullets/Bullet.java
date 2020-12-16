@@ -53,7 +53,8 @@ public class Bullet {
     }
 
     //init part
-    public Bullet(int position_x,int position_y,boolean ice){
+    public Bullet(int position_x,int position_y,boolean ice)
+    {
         setPosition_x(position_x);
         setPosition_y(position_y);
         setIce(ice);
@@ -67,7 +68,7 @@ public class Bullet {
         else
         {
             try{
-                this.img = ImageIO.read(new File("img/0.png"));
+                this.img = ImageIO.read(new File("img/pea_bullet.png"));
             }catch (Exception var1) {
                 var1.printStackTrace();
             }

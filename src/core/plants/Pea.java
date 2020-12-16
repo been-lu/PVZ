@@ -50,10 +50,13 @@ public  class Pea extends Plant implements Attack
     }
 
     @Override
-    public boolean attack(ArrayList<Zombie> zombies, ArrayList<Bullet> bullets){
-        for(Zombie z:zombies){
+    public boolean attack(ArrayList<Zombie> zombies, ArrayList<Bullet> bullets)
+    {
+        for(Zombie z:zombies)
+        {
             if(z.getPosition_y()==this.position_y)
-                if(z.getPosition_x()>=this.position_x) {
+                if(z.getPosition_x()>=this.position_x)
+                {
                     bullets.add(new Bullet(position_x, position_y, false));
                     return true;
                 }
