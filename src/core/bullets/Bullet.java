@@ -12,7 +12,7 @@ public class Bullet {
     private int position_x;
     private int position_y;
     private boolean isIce;//to judge whether this bullet is created by a ice bean shooter
-    static int bulletSpeed=1;
+    static double bulletSpeed=1;
     private BufferedImage img;
 
     public BufferedImage getImage(){
@@ -21,7 +21,7 @@ public class Bullet {
 
     //drawing part
     public void paintObject(Graphics g){
-        g.drawImage(getImg(),position_x,position_y,null);
+        g.drawImage(getImg(),position_x+70,position_y+80,null);
     }
 
     public int getPosition_y() {
@@ -48,17 +48,14 @@ public class Bullet {
         return img;
     }
 
-    public void setImg(BufferedImage img) {
-        this.img = img;
-    }
-
     public void setIce(boolean ice) {
         this.isIce = ice;
     }
 
     //init part
-    public Bullet(int position_x,boolean ice){
+    public Bullet(int position_x,int position_y,boolean ice){
         setPosition_x(position_x);
+        setPosition_y(position_y);
         setIce(ice);
         if(ice){
             try{
@@ -89,8 +86,8 @@ public class Bullet {
     public boolean check(ArrayList<Zombie> zombies){
         for(Zombie z:zombies){
             if(z.getPosition_y()==this.getPosition_y()){
-                if(z.getPosition_x()==this.getPosition_x()){
-                    if(isIce)
+                if(z.getPosition_x()-this.getPosition_x()<=1){
+                    if(isIce())
                         z.beAttack(2);
                     else
                         z.beAttack(1);
@@ -102,7 +99,7 @@ public class Bullet {
     }
 
     public void step(){
-        setPosition_x(getPosition_x()+bulletSpeed);
+        setPosition_x((int)(getPosition_x()+bulletSpeed));
     }
 
 

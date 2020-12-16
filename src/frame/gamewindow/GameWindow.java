@@ -54,7 +54,8 @@ public  class GameWindow extends JPanel implements Runnable
 
         Thread t1=new Thread(this);
         t1.start();
-        this. creatZombie();
+        this.creatZombie();
+        this.createBullet();
     }
 
     public void paint(Graphics g)
@@ -88,6 +89,8 @@ public  class GameWindow extends JPanel implements Runnable
     }
 
     public void drawBullet(Graphics g){
+        if(bullets.isEmpty())
+            return ;
         for(Bullet b:bullets){
             b.paintObject(g);
         }
@@ -125,12 +128,23 @@ public  class GameWindow extends JPanel implements Runnable
     }
 
     public void bulletMove(){
-        for(Bullet b:bullets){
-            if(b.check(zombie))
-                ;
-            else
-                b.step();
+        Iterator<Bullet> b=bullets.iterator();
+        while(b.hasNext()){
+            Bullet tmp=b.next();
+            if(tmp.check(zombie))
+                b.remove();
+            else{
+                tmp.step();
+                if(tmp.getPosition_x()>900)
+                    b.remove();
+            }
         }
+    }
+
+    //test
+    public void createBullet(){
+        bullets.add(new Bullet(80,0,true));
+        bullets.add(new Bullet(80,100,false));
     }
     public void cheakdie()
     {
@@ -179,6 +193,7 @@ public  class GameWindow extends JPanel implements Runnable
             try
             {
                 this.zombiemove();
+                this.bulletMove();
                 cheakdie();
                 repaint();
                 Thread.sleep(30);
