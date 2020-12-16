@@ -74,7 +74,11 @@ public class Zombie0 extends Zombie implements Attack
     @Override
     public void attack(Plant p)
     {
+<<<<<<< HEAD
       state=ATTACK;
       p.beAttack(ATK);
+=======
+      this.position_x-=speed;
+>>>>>>> 060f7a54c99b4fdd1005d5f16ecaeda27fd0e9ad
     }
 }
