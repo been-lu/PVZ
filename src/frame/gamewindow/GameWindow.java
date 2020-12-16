@@ -192,6 +192,7 @@ public  class GameWindow extends JPanel implements Runnable
                 this.zombiemove();
                 this.bulletMove();
                 cheakdie();
+                plantAttack();
                 repaint();
 
                 Thread.sleep(30);
@@ -202,7 +203,10 @@ public  class GameWindow extends JPanel implements Runnable
         }
     }
 
-
+    public void plantAttack(){
+        for(Plant p:plant)
+            p.attack(zombie,bullets);
+    }
 
 }
 
