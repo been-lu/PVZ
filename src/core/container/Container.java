@@ -140,8 +140,8 @@ public class Container {
         }
     }
 
-    public void addBullet(int position_x, boolean ice) {
-        tmpBullet = new Bullet(position_x, ice);
+    public void addBullet(int position_x, int position_y,boolean ice) {
+        tmpBullet = new Bullet(position_x,position_y, ice);
         bullets.add(tmpBullet);
         tmpBullet = null;
     }

@@ -1,9 +1,12 @@
 package core.plants;
+import core.bullets.Bullet;
+import core.zombies.Zombie;
 import frame.gamewindow.GameWindow;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -18,9 +18,6 @@ public abstract class Zombie extends JLabel
     protected int position_y;
     protected int zombiarunimg;
     protected int zombiaattackimg;
-
-
-
     protected int zombiadieimg;
     protected double speed;
     protected double ATK;
@@ -29,32 +26,23 @@ public abstract class Zombie extends JLabel
     public static final int ATTACK = 1;
     public static final int DEAD = 2;
     protected int state = RUN;
-    protected int kind;
+    public abstract BufferedImage getImage();
     public void paintObjict(Graphics g)
     {
-        g.drawImage(getImage(),position_x+110,position_y+40,null);
+        g.drawImage(getImage(),position_x-65,position_y+20,null);
     }
-    public abstract BufferedImage getImage();
-    public abstract void getImage1();
     public abstract void step();
     public void cheak(ArrayList<Plant> plant)
     {
-        for(Plant  p: plant)
+        for(Plant p: plant)
         {
-            if(position_y==p.getPosition_y())
-            {
-                if (this.getPosition_y() == p.getPosition_y() && this.getPosition_x() < p.getPosition_x() + 40)
-                {
-                    attack(p);
-                }
-            }
+            if(this.getPosition_y()==p.getPosition_y()&&this.getPosition_x()<p.getPosition_x()+60)
+                attack(p);
         }
     }
     public void attack(Plant p)
     {
         state=ATTACK;
-        if(p.getLife()<ATK)
-            state=RUN;
         p.beAttack(ATK);
     }
     public void beAttack(int ATK)
@@ -62,17 +50,13 @@ public abstract class Zombie extends JLabel
         this.life-=ATK;
         if(this.life<=0)
         {
-         state=2;
+            state=2;
         }
     }
     public Zombie (int x,int y)
     {
         this.position_x=x;
         this.position_y=y;
-    }
-    public void creatzombie(int x,int y,ArrayList<Zombie> z)
-    {
-        z.add(new Zombie0(x,y));
     }
     public int getLife()
     {
@@ -118,13 +102,5 @@ public abstract class Zombie extends JLabel
     public int getPosition_x()
     {
         return this.position_x;
-    }
-    public int getKind()
-    {
-        return kind;
-    }
-    public void setKind(int kind)
-    {
-        this.kind = kind;
     }
 }
