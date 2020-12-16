@@ -10,9 +10,11 @@ import java.util.ArrayList;
 
 public class Bullet {
     private int position_x;
+    private int ATK1=1;
+    private int ATK2=1;
     private int position_y;
     private boolean isIce;//to judge whether this bullet is created by a ice bean shooter
-    static double bulletSpeed=1;
+    static double bulletSpeed=5;
     private BufferedImage img;
 
     public BufferedImage getImage(){
@@ -21,7 +23,7 @@ public class Bullet {
 
     //drawing part
     public void paintObject(Graphics g){
-        g.drawImage(getImg(),position_x+70,position_y+80,null);
+        g.drawImage(getImg(),position_x+90,position_y+80,null);
     }
 
     public int getPosition_y() {
@@ -60,7 +62,7 @@ public class Bullet {
         setIce(ice);
         if(ice){
             try{
-                this.img = ImageIO.read(new File("img/0.png"));
+                this.img = ImageIO.read(new File("img/pea_bullet.png"));
             }catch (Exception var1) {
                 var1.printStackTrace();
             }
@@ -86,12 +88,13 @@ public class Bullet {
 
     public boolean check(ArrayList<Zombie> zombies){
         for(Zombie z:zombies){
-            if(z.getPosition_y()==this.getPosition_y()){
+            if(z.getPosition_y()==this.getPosition_y())
+            {
                 if(z.getPosition_x()-this.getPosition_x()<=1){
                     if(isIce())
-                        z.beAttack(2);
+                        z.beAttack(ATK2);
                     else
-                        z.beAttack(1);
+                        z.beAttack(ATK1);
                     return true;
                 }
             }

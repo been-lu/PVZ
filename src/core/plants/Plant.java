@@ -15,6 +15,7 @@ public abstract class Plant extends JLabel
 {
     protected int width;
     public int kind;//0-太阳花,1-豌豆射手,2-寒冰射手,-3坚果,-4双射手
+    public int suninterval;//太阳花产生太阳专用
     protected int height;
     protected double life;
     protected int position_x;
@@ -22,6 +23,7 @@ public abstract class Plant extends JLabel
     protected int plantimg;
     protected int plantimg1;
     protected int plantimg2;
+    protected int interval;
     public  static final int LIFE=0;
     public  static final int DIE=1;
     protected int state = LIFE;
@@ -29,6 +31,7 @@ public abstract class Plant extends JLabel
     {
         this.position_x=x;
         this.position_y=y;
+        interval=0;
     }
     public  void paintObjict(Graphics g)
 
@@ -75,12 +78,9 @@ public abstract class Plant extends JLabel
     {
         this.position_y = position_y;
     }
-
     public int getKind() {
         return this.kind;
     }
-
-
     public boolean attack(ArrayList<Zombie> zombies, ArrayList<Bullet> bullets){
         return false;
     }

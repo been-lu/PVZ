@@ -31,7 +31,7 @@ public  class Zombie3 extends Zombie
         this.width=60;
         this.height=60;
         this.life=20;
-        this.speed=0.8;
+        this.speed=0.4;
         this.getImage1();
         this.zombiarunimg=0;
         this.zombiaattackimg=0;

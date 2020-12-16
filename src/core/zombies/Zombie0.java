@@ -28,7 +28,7 @@ public class Zombie0 extends Zombie
         this.width=60;
         this.height=60;
         this.life=20;
-        this.speed=0.8;
+        this.speed=0.4;
         this.getImage1();
         this.zombiarunimg=0;
         this.zombiaattackimg=0;
@@ -51,7 +51,10 @@ public class Zombie0 extends Zombie
                 attackimg[i-1] = ImageIO.read(new File("img/run/zombieAttack(" + i + ").png"));
                 // else  runimg[i] = ImageIO.read(new File("img/run/run00" + i + ".jpg"));
             }
+            for( i=1;i<=10;i++)
+            {
 
+            }
         }
         catch(Exception e)
         {
@@ -67,18 +70,20 @@ public class Zombie0 extends Zombie
             if (zombiarunimg == 22)
                 zombiarunimg = 0;
             return (runimg[zombiarunimg]);
-        } else if (state == 1)
+        }
+        else if (state == 1)
         {
             zombiaattackimg++;
             if (zombiaattackimg == 21)
                 zombiaattackimg = 0;
             return (attackimg[zombiaattackimg]);
-        } else
+        }
+        else
         {
-            zombiadieimg++;
-            if (zombiadieimg == 0)
-                zombiadieimg = 0;
-            return (dieimg[zombiadieimg]);
+            zombiadieimg+=0.1;
+            if (zombiadieimg == 9)
+                state=2;
+            return (attackimg[(int)(zombiadieimg)]);
 
         }
     }
@@ -113,11 +118,18 @@ public class Zombie0 extends Zombie
     @Override
     public void attack(Plant p)
     {
-
       state=ATTACK;
         if(p.getLife()<ATK)
             state=RUN;
       p.beAttack(ATK);
+    }
+    public void beAttack(int ATK)
+    {
+        this.life-=ATK;
+        if(this.life<=0)
+        {
+            state=3;
+        }
     }
 
 

@@ -46,6 +46,8 @@ public class SunFlower extends Plant
         this.life=10;
         this.getImage1();
         this.kind=0;
+        suninterval=0;
     }
+
 
 }

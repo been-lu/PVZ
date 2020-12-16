@@ -46,14 +46,26 @@ public class SnowPea extends Plant
         this.kind=2;
     }
 
-    public boolean attack(ArrayList<Zombie> zombies, ArrayList<Bullet> bullets){
-        for(Zombie z:zombies){
-            if(z.getPosition_y()==this.position_y)
-                if(z.getPosition_x()>=this.position_x) {
-                    bullets.add(new Bullet(position_x, position_y, true));
-                    return true;
-                }
+    public boolean attack(ArrayList<Zombie> zombies, ArrayList<Bullet> bullets)
+    {
+        if(interval!=40)
+        {
+            interval++;
+            return false;
         }
-        return false;
+        else
+        {
+            interval=0;
+            for (Zombie z : zombies)
+            {
+                if (z.getPosition_y() == this.position_y)
+                    if (z.getPosition_x() >= this.position_x)
+                    {
+                        bullets.add(new Bullet(position_x+80, position_y, true));
+                        return true;
+                    }
+            }
+            return false;
+        }
     }
 }

@@ -20,7 +20,7 @@ public class GatlingPea extends Plant
         this.kind=5;
     }
 
-    @Override
+
     public BufferedImage getImage() {
 
         plantimg++;

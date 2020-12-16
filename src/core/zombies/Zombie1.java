@@ -19,7 +19,7 @@ public class Zombie1 extends Zombie
         this.width=50;
         this.height=50;
         this.life=20;
-        this.speed=0.8;
+        this.speed=0.4;
         this.getImage1();
         this.zombiarunimg=0;
         this.zombiaattackimg=0;
@@ -69,7 +69,7 @@ public class Zombie1 extends Zombie
             zombiadieimg++;
             if (zombiadieimg == 0)
                 zombiadieimg = 0;
-            return (dieimg[zombiadieimg]);
+            return (dieimg[(int)zombiadieimg]);
 
         }
     }

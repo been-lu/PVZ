@@ -18,10 +18,21 @@ public abstract class Zombie extends JLabel
     protected int position_y;
     protected int zombiarunimg;
     protected int zombiaattackimg;
-    protected int zombiadieimg;
+    protected double zombiadieimg;
     protected double speed;
     protected double ATK;
-    protected int kind;
+
+    public int getKind()
+    {
+        return kind;
+    }
+
+    public void setKind(int kind)
+    {
+        this.kind = kind;
+    }
+
+    protected int kind;//0号普通僵尸,1号铁桶,2号路障,3号报纸,4号撑杆,5号铁门
     public static final int isdie = 0;
     public static final int RUN=0;
     public static final int ATTACK = 1;
@@ -31,7 +42,7 @@ public abstract class Zombie extends JLabel
     public abstract  void getImage1();
     public void paintObjict(Graphics g)
     {
-        g.drawImage(getImage(),position_x-65,position_y+20,null);
+        g.drawImage(getImage(),position_x+110,position_y+40,null);
     }
     public abstract void step();
     public void cheak(ArrayList<Plant> plant)
@@ -45,6 +56,8 @@ public abstract class Zombie extends JLabel
     public void attack(Plant p)
     {
         state=ATTACK;
+        if(p.getLife()<ATK)
+            state=RUN;
         p.beAttack(ATK);
     }
     public void beAttack(int ATK)
